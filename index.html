@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remote Desktop Software Website UI</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:ital,wght@1,300&family=Roboto+Slab:wght@900&family=Roboto:ital,wght@0,400;1,300&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"
+    integrity="sha512-fHXRw0CXruAoINU11+hgqYvY/PcsOWzmj0QmcSOtjlJcqITbPyypc8cYpidjPurWpCnlB8VKfRwx6PIpASCUkQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        fontFamily: {
+          mono: ["Roboto", "sans-serif"],
+        },
+      },
+    };
+  </script>
+  <style>
+    /* Toggle B */
+    input:checked~.dot {
+      transform: translateX(100%);
+      background-color: #EBEBE8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="px-auto bg-[#31352E] dark:bg-[#2b2727] py-5 w-full duration-200 animate__animated" id="fixedNav">
+    <div class="container mx-auto px-5 md:px-0" id="home">
+      <!-- Nav-bar -->
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div>
+          <svg width="162" height="47" viewBox="0 0 162 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M65.344 36L56.032 13.28H61.568L67.616 28.416L73.632 13.28H79.232L69.92 36H65.344ZM85.073 36.352C83.0037 36.352 81.2437 35.5307 79.793 33.888C78.3637 32.2453 77.649 30.2827 77.649 28C77.649 25.7173 78.3637 23.7547 79.793 22.112C81.2437 20.4693 83.0037 19.648 85.073 19.648C86.9077 19.648 88.3583 20.2987 89.425 21.6V20H94.257V36H89.425V34.4C88.3583 35.7013 86.9077 36.352 85.073 36.352ZM83.505 30.848C84.1877 31.5947 85.073 31.968 86.161 31.968C87.249 31.968 88.1237 31.5947 88.785 30.848C89.4677 30.1013 89.809 29.152 89.809 28C89.809 26.848 89.4677 25.8987 88.785 25.152C88.1237 24.4053 87.249 24.032 86.161 24.032C85.073 24.032 84.1877 24.4053 83.505 25.152C82.8437 25.8987 82.513 26.848 82.513 28C82.513 29.152 82.8437 30.1013 83.505 30.848ZM98.234 36V20H103.066V21.632C103.983 20.3093 105.466 19.648 107.514 19.648C109.455 19.648 110.97 20.2987 112.058 21.6C113.167 22.9013 113.722 24.6187 113.722 26.752V36H108.89V27.584C108.89 25.216 108.026 24.032 106.298 24.032C105.338 24.032 104.559 24.384 103.962 25.088C103.365 25.792 103.066 26.8373 103.066 28.224V36H98.234ZM119.884 17.824C119.073 17.824 118.369 17.536 117.772 16.96C117.175 16.3627 116.876 15.648 116.876 14.816C116.876 13.984 117.175 13.28 117.772 12.704C118.369 12.1067 119.073 11.808 119.884 11.808C120.737 11.808 121.452 12.1067 122.028 12.704C122.625 13.28 122.924 13.984 122.924 14.816C122.924 15.648 122.625 16.3627 122.028 16.96C121.452 17.536 120.737 17.824 119.884 17.824ZM117.484 36V20H122.316V36H117.484ZM126.297 36V12H131.129V36H126.297ZM135.109 36V12H139.941V36H135.109ZM150.385 36.352C148.316 36.352 146.556 35.5307 145.106 33.888C143.676 32.2453 142.962 30.2827 142.962 28C142.962 25.7173 143.676 23.7547 145.106 22.112C146.556 20.4693 148.316 19.648 150.385 19.648C152.22 19.648 153.671 20.2987 154.738 21.6V20H159.569V36H154.738V34.4C153.671 35.7013 152.22 36.352 150.385 36.352ZM148.818 30.848C149.5 31.5947 150.386 31.968 151.474 31.968C152.562 31.968 153.436 31.5947 154.098 30.848C154.78 30.1013 155.122 29.152 155.122 28C155.122 26.848 154.78 25.8987 154.098 25.152C153.436 24.4053 152.562 24.032 151.474 24.032C150.386 24.032 149.5 24.4053 148.818 25.152C148.156 25.8987 147.826 26.848 147.826 28C147.826 29.152 148.156 30.1013 148.818 30.848Z"
+              fill="#61C454"></path>
+            <path
+              d="M41 23.1148C41 33.1427 32.9177 41.2295 23 41.2295C13.0823 41.2295 5 33.1427 5 23.1148C5 13.0868 13.0823 5 23 5C32.9177 5 41 13.0868 41 23.1148Z"
+              stroke="#61C454" stroke-width="10"></path>
+            <path
+              d="M43.5 35.4426C43.5 40.4566 39.4588 44.5 34.5 44.5C29.5412 44.5 25.5 40.4566 25.5 35.4426C25.5 30.4286 29.5412 26.3853 34.5 26.3853C39.4588 26.3853 43.5 30.4286 43.5 35.4426Z"
+              fill="#FEFEFE" stroke="#61C454" stroke-width="5"></path>
+          </svg>
+        </div>
+        <!-- Menu -->
+        <div
+          class="-left-full fixed  md:static top-0 md:top-auto  md:left-0 flex items-center justify-center duration-300 h-screen md:h-auto md:dark:bg-transparent md:bg-transparent dark:bg-[#31352E] bg-[#EBEBE8] w-full md:w-auto z-10 "
+          id="mobile-menu" style="left:-100%;">
+          <div
+            class="md:hidden absolute md:right-auto md:top-auto top-0 right-0 mt-5 mr-3 border border-[#61C454]  p-2 w-8 h-8 flex justify-center items-center rounded-full close-menu ">
+            <i class="fa-solid fa-xmark dark:text-slate-200"></i>
+          </div>
+          <ul
+            class="flex flex-col space-y-10 md:flex-row md:space-y-0 md:space-x-8 text-lg font-medium text-[#61C454] cursor-pointer ">
+            <li class="text-[#61C454] hover:underline"><a href="#homesection">Home</a></li>
+            <li class="hover:underline"><a href="#why">Why?</a></li>
+            <li class="hover:underline"><a href="#features">Features</a></li>
+            <li class="hover:underline"><a href="#clients">Clients</a> </li>
+          </ul>
+        </div>
+        <!-- Button_Dark&light Mood -->
+        <div class="">
+          <!-- Toggle B -->
+          <div class="mt-4 flex items-center space-x-3">
+            <label for="toggleB" class="flex items-center cursor-pointer">
+              <!-- toggle -->
+              <div class="relative">
+                <!-- input -->
+                <input type="checkbox" id="toggleB" class="sr-only" />
+                <!-- line -->
+                <div class="block bg-[#61C454] w-14 h-8 rounded-full"></div>
+                <!-- dot -->
+                <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+              </div>
+            </label>
+            <div class="md:hidden border border-slate-500 w-8 h-8 flex items-center justify-center rounded-full"
+              id="open-menu">
+              <i class="fa-solid fa-bars dark:text-white"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="homesection" class=" mx-auto h-[90vh] bg-[#D1E2C4] dark:bg-[#31352E] flex items-center justify-center">
+    <div class="flex flex-col justify-center items-center space-y-10">
+      <div class="flex flex-col justify-center items-center text-center">
+        <h1 class="flex flex-col md:flex-row font-bold text-8xl text-[#31352E] dark:text-[#EBEBE8]">
+          Access.<span class="text-[#61C454]">Now.</span>
+        </h1>
+        <p class="text-xl py-4 dark:text-[#EBEBE8]">
+          If you do reload the webpage save choose theme doesn't change you
+          choose theme.
+        </p>
+      </div>
+      <div class="flex flex-col md:flex-row space-y-5 md:space-y-0 space-x-0 md:space-x-5">
+        <button
+          class="flex items-center space-x-3 bg-[#61C454] hover:bg-[#52c942] duration-200 px-8 py-5 rounded-full text-white font-medium text-xl">
+          <div><i class="fa-solid fa-download text-[#EBEBE8]"></i></div>
+          <span class="text-[#EBEBE8]">Download Now</span>
+        </button>
+        <button
+          class="flex items-center space-x-3 border border-[#61C454] px-8 py-5 rounded-full text-green-500 font-medium text-xl">
+          <div class=""><i class="fa-solid fa-cart-shopping text-[#61C454]"></i></div>
+          <span class="text-[#61C454]">Shopping Now</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  <section class="bg-[#EBEBE8] py-20 px-8" id="why">
+    <div class="container mx-auto">
+      <h5 class="font-medium text-lg text-[#61c454] text-center md:text-left">
+        Website Design Web Development!
+      </h5>
+      <h1 class="text-5xl md:text-8xl font-medium text-[#31352E] text-center md:text-left mb-8">
+        Overcoming <br />
+        distance
+      </h1>
+      <p class="max-w-lg text-slate-600 text-center md:text-left mb-8">
+        Dynamic Web Development team of developers specializes in developing
+        the best mobile-friendly and compelling websites, landing pages and
+        custom logo design. We provide assistance to professionals, their
+        website design and web development needs.
+      </p>
+      <div class="flex justify-center md:justify-start">
+        <button
+          class="flex items-center space-x-3  bg-[#61C454] hover:bg-[#52c942] duration-200 px-10 py-4 rounded-full text-[#EBEBE8] font-medium text-xl">
+          <span>Learn More</span>
+          <div><i class="fa-solid fa-angles-right text-[#EBEBE8]"></i></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!--  Features Section -->
+  <section class="py-20 px-8 bg-[#D1E2C4] dark:bg-[#31352E]" id="features">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-2 space-y-10">
+        <div class="grid md:grid-cols-2 gap-10">
+          <div
+            class="flex flex-col items-center border hover:border-[#61c454] py-4 rounded-lg border-transparent  cursor-pointer">
+            <i class="fa-solid fa-plane text-[#61c454] text-6xl mb-3"></i>
+            <h1 class="font-bold text-3xl text-[#61c454] mb-3">
+              Blazing fast
+            </h1>
+            <p class="max-w-sm text-[#61c454] text-center">
+              Dynamic Web Development developers specializes in developing
+              development needs.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center border hover:border-[#61c454] py-4 rounded-lg border-transparent  cursor-pointer">
+            <i class="fa-solid fa-weight-scale text-[#61c454] text-6xl mb-3"></i>
+            <h1 class="font-bold text-3xl text-[#61c454] mb-3">
+              Light Weight
+            </h1>
+            <p class="max-w-sm text-[#61c454] text-center">
+              Dynamic Web Development developers specializes in developing
+              development needs.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center border hover:border-[#61c454] py-4 rounded-lg border-transparent  cursor-pointer">
+            <i class="fa-solid fa-file-shield text-[#61c454] text-6xl mb-3"></i>
+            <h1 class="font-bold text-3xl text-[#61c454] mb-3">Secure</h1>
+            <p class="max-w-sm text-[#61c454] text-center">
+              Dynamic Web Development developers specializes in developing
+              development needs.
+            </p>
+          </div>
+          <div
+            class="flex flex-col items-center border hover:border-[#61c454] py-4 rounded-lg border-transparent  cursor-pointer">
+            <i class="fa-solid fa-place-of-worship text-[#61c454] text-6xl mb-3"></i>
+            <h1 class="font-bold text-3xl text-[#61c454] mb-3">Everywhere</h1>
+            <p class="max-w-sm text-[#61c454] text-center">
+              Dynamic Web Development developers specializes in developing
+              development needs.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+          <h1 class="font-bold text-4xl max-w-xs mb-7 text-[#31352E] text-center dark:text-[#EBEBE8]">
+            Why 500+
+            <br />
+            million users
+            <br />
+            love AnyDesk!
+          </h1>
+          <div class="">
+            <button
+              class="flex items-center space-x-3 bg-[#61C454] hover:bg-[#52c942] duration-200 px-12 py-4 rounded-full text-white font-medium text-xl">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Discover</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Section -->
+  <section class=" mx-auto py-20 px-8 bg-[#EBEBE8]" id="clients">
+    <div class="flex flex-col items-center md:flex-row space-y-10 md:space-y-0 md:justify-between text-center">
+      <div class="">
+        <h1 class="text-4xl font-bold text-[#61c454] mb-2">500+ Million</h1>
+        <h6 class="text-xl lg:text-2xl font-medium text-[#31352E] dark:text-[#61c454] text-center">
+          Downloads
+        </h6>
+      </div>
+      <div class="">
+        <h1 class="text-4xl font-bold text-[#61c454] mb-2">400+ Million</h1>
+        <h6 class="text-xl lg:text-2xl font-medium text-[#31352E] dark:text-[#61c454] text-center">
+          Sessions per month
+        </h6>
+      </div>
+      <div class="">
+        <h1 class="text-4xl font-bold text-[#61c454] mb-2">300+ Million</h1>
+        <h6 class="text-xl lg:text-2xl font-medium text-[#31352E] dark:text-[#61c454] text-center">
+          Bridged miles per month
+        </h6>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class=" mx-auto py-20 px-8 bg-[#D1E2C4] dark:bg-[#31352E]">
+    <h1
+      class="text-2xl md:text-5xl font-bold md:font-medium text-center mb-10 text text-[#31352E]  dark:text-[#EBEBE8]">
+      Vanilla fits your Needs
+    </h1>
+    <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-7 text-center space-y-10 lg:space-y-0">
+      <div
+        class="flex flex-col items-center border hover:border-[#61c454] py-10 rounded-lg border-transparent cursor-pointer">
+        <i class="fa-solid fa-cloud text-[#61c454]  text-6xl mb-3"></i>
+        <h1 class="font-medium text-2xl mb-3 text-[#31352E] dark:text-[#EBEBE8]">
+          Runs in Cloud
+        </h1>
+        <p class="max-w-sm text-[#31352E]  dark:text-[#EBEBE8] text-center">
+          Dynamic Web Development developers specializes in developing
+          development needs.
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <button class="flex items-center space-x-3 px-10 py-4 rounded-full text-[#61c454] font-bold text-xl">
+            <span>Learn More</span>
+            <div><i class="fa-solid fa-angles-right text-sm"></i></div>
+          </button>
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center border hover:border-[#61c454]  py-10 rounded-lg border-transparent cursor-pointer">
+        <i class="fa-solid fa-mobile text-[#61c454]  text-6xl mb-3"></i>
+        <h1 class="font-medium text-2xl mb-3 text-[#31352E] dark:text-[#EBEBE8]">
+          Full mobile Support
+        </h1>
+        <p class="max-w-sm text-[#31352E]  dark:text-[#EBEBE8] text-center ">
+          Dynamic Web Development developers specializes in developing
+          development needs.
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <button class="flex items-center space-x-3 px-10 py-4 rounded-full text-[#61c454]  font-bold text-xl">
+            <span>Learn More</span>
+            <div><i class="fa-solid fa-angles-right text-sm"></i></div>
+          </button>
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center border hover:border-[#61c454]  py-10 rounded-lg border-transparent cursor-pointer">
+        <i class="fa-solid fa-person text-[#61c454]  text-6xl mb-3"></i>
+        <h1 class="font-medium text-2xl mb-3 text-[#31352E] dark:text-[#EBEBE8]">
+          Flexibility
+        </h1>
+        <p class="max-w-sm text-[#31352E]  dark:text-[#EBEBE8] text-center ">
+          Dynamic Web Development developers specializes in developing
+          development needs.
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <button class="flex items-center space-x-3 px-10 py-4 rounded-full text-[#61c454]  font-bold text-xl">
+            <span>Learn More</span>
+            <div><i class="fa-solid fa-angles-right text-sm"></i></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container mx-auto ">
+    <span>
+      <hr />
+    </span>
+  </div>
+  <!-- Download Section -->
+  <section class=" mx-auto py-20 px-8 bg-[#D1E2C4] dark:bg-[#31352E]">
+    <div class="flex flex-col items-center text-center">
+      <h1 class="text-5xl font-bold mb-5 text-[#31352E]  dark:text-[#EBEBE8]">
+        Every operating system,every device
+      </h1>
+      <h6 class="text-2xl font-medium mb-12 text-[#31352E]  dark:text-[#EBEBE8]">
+        It runs native clients on all major platforms.
+      </h6>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-3 text-center">
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-windows text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">Windows</span>
+      </div>
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-apple text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">macOS</span>
+      </div>
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-linux text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">Linux</span>
+      </div>
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-android text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">Android</span>
+      </div>
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-raspberry-pi text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">Raspberry-pi</span>
+      </div>
+      <div
+        class="flex flex-col items-center border max-w-sm p-5 space-y-5 border-transparent rounded-lg hover:border-[#61c454] cursor-pointer">
+        <i class="fa-brands fa-chrome text-[#61c454]   text-6xl"></i>
+        <span class="text-xl font-medium text-[#31352E]  dark:text-[#EBEBE8]">Chrome OS</span>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section -->
+  <footer class="bg-[#31352E] dark:bg-[#2b2727] px-auto py-4">
+    <div class="container mx-auto ">
+      <div class="flex flex-col items-center md:flex-row md:justify-center md:justify-between">
+        <svg width="162" height="47" viewBox="0 0 162 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M65.344 36L56.032 13.28H61.568L67.616 28.416L73.632 13.28H79.232L69.92 36H65.344ZM85.073 36.352C83.0037 36.352 81.2437 35.5307 79.793 33.888C78.3637 32.2453 77.649 30.2827 77.649 28C77.649 25.7173 78.3637 23.7547 79.793 22.112C81.2437 20.4693 83.0037 19.648 85.073 19.648C86.9077 19.648 88.3583 20.2987 89.425 21.6V20H94.257V36H89.425V34.4C88.3583 35.7013 86.9077 36.352 85.073 36.352ZM83.505 30.848C84.1877 31.5947 85.073 31.968 86.161 31.968C87.249 31.968 88.1237 31.5947 88.785 30.848C89.4677 30.1013 89.809 29.152 89.809 28C89.809 26.848 89.4677 25.8987 88.785 25.152C88.1237 24.4053 87.249 24.032 86.161 24.032C85.073 24.032 84.1877 24.4053 83.505 25.152C82.8437 25.8987 82.513 26.848 82.513 28C82.513 29.152 82.8437 30.1013 83.505 30.848ZM98.234 36V20H103.066V21.632C103.983 20.3093 105.466 19.648 107.514 19.648C109.455 19.648 110.97 20.2987 112.058 21.6C113.167 22.9013 113.722 24.6187 113.722 26.752V36H108.89V27.584C108.89 25.216 108.026 24.032 106.298 24.032C105.338 24.032 104.559 24.384 103.962 25.088C103.365 25.792 103.066 26.8373 103.066 28.224V36H98.234ZM119.884 17.824C119.073 17.824 118.369 17.536 117.772 16.96C117.175 16.3627 116.876 15.648 116.876 14.816C116.876 13.984 117.175 13.28 117.772 12.704C118.369 12.1067 119.073 11.808 119.884 11.808C120.737 11.808 121.452 12.1067 122.028 12.704C122.625 13.28 122.924 13.984 122.924 14.816C122.924 15.648 122.625 16.3627 122.028 16.96C121.452 17.536 120.737 17.824 119.884 17.824ZM117.484 36V20H122.316V36H117.484ZM126.297 36V12H131.129V36H126.297ZM135.109 36V12H139.941V36H135.109ZM150.385 36.352C148.316 36.352 146.556 35.5307 145.106 33.888C143.676 32.2453 142.962 30.2827 142.962 28C142.962 25.7173 143.676 23.7547 145.106 22.112C146.556 20.4693 148.316 19.648 150.385 19.648C152.22 19.648 153.671 20.2987 154.738 21.6V20H159.569V36H154.738V34.4C153.671 35.7013 152.22 36.352 150.385 36.352ZM148.818 30.848C149.5 31.5947 150.386 31.968 151.474 31.968C152.562 31.968 153.436 31.5947 154.098 30.848C154.78 30.1013 155.122 29.152 155.122 28C155.122 26.848 154.78 25.8987 154.098 25.152C153.436 24.4053 152.562 24.032 151.474 24.032C150.386 24.032 149.5 24.4053 148.818 25.152C148.156 25.8987 147.826 26.848 147.826 28C147.826 29.152 148.156 30.1013 148.818 30.848Z"
+            fill="#61C454"></path>
+          <path
+            d="M41 23.1148C41 33.1427 32.9177 41.2295 23 41.2295C13.0823 41.2295 5 33.1427 5 23.1148C5 13.0868 13.0823 5 23 5C32.9177 5 41 13.0868 41 23.1148Z"
+            stroke="#61C454" stroke-width="10"></path>
+          <path
+            d="M43.5 35.4426C43.5 40.4566 39.4588 44.5 34.5 44.5C29.5412 44.5 25.5 40.4566 25.5 35.4426C25.5 30.4286 29.5412 26.3853 34.5 26.3853C39.4588 26.3853 43.5 30.4286 43.5 35.4426Z"
+            fill="#FEFEFE" stroke="#61C454" stroke-width="5"></path>
+        </svg>
+        <div class="text-lg font-medium text-[#61C454] flex justify-between space-x-5 md:space-x-12">
+          <span>Privacy Notice</span>
+          <span>Contact</span>
+          <span>Why Love?</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    const toggleB = document.getElementById("toggleB");
+
+    const changeThemeToDark = () => {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("data-theme", "dark");
+    };
+
+    const changeThemeToLight = () => {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("data-theme", "light");
+    };
+
+    toggleB.addEventListener("click", () => {
+      const theme = localStorage.getItem("data-theme");
+      if (theme === "dark") {
+        changeThemeToLight();
+      } else {
+        changeThemeToDark();
+      }
+    });
+
+    const theme = localStorage.getItem("data-theme");
+    if (theme === "dark") {
+      changeThemeToDark();
+      toggleB.setAttribute("checked", "checked");
+    } else {
+      changeThemeToLight();
+    }
+
+
+    // Menu
+
+    const openMenu = document.querySelector('#open-menu');
+    const closeMenu = document.querySelector('.close-menu');
+    const mobileMenu = document.querySelector('#mobile-menu');
+
+    openMenu.addEventListener('click', () => {
+      mobileMenu.style.left = '0px'
+    })
+
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.style.left = '-100%'
+    })
+
+    // Navbar Fixed and Animation
+    const fixedNav = document.getElementById('fixedNav')
+    var waypoint = new Waypoint({
+      element: document.getElementById('why'),
+      handler: function (direction) {
+        if (direction === 'down') {
+          fixedNav.classList.add('fixed', 'top-0', 'animate__fadeInDown', 'shadow-lg')
+        } else {
+          fixedNav.classList.remove('fixed', 'top-0', 'animate__fadeInDown', 'shadow-lg')
+        }
+      },
+      offset: '20%'
+    })
+
+
+
+  </script>
+</body>
+
+</html>
